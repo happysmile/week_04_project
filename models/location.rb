@@ -49,4 +49,22 @@ class Location
     SqlRunner.run( sql, values )
   end
 
+  def country()
+    return Country.find_by_id(@country_id)
+  end
+
+  def sights()
+    sql = "SELECT * from sights WHERE sights.location_id = $1"
+    values = [@id]
+    results = SqlRunner.run(sql, values)
+    return results.map { |result| Sight.new(result) }
+  end
+
+  def tick_off()
+    @visited = true
+    update()
+    country = country()
+    country.tick_off()
+  end
+
 end
