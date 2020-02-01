@@ -31,7 +31,7 @@ class Location
   end
 
   def save()
-    sql = "INSERT INTO locations(name, location_type, country_id, visited) VALUES ($1, $2, $3) RETURNING id"
+    sql = "INSERT INTO locations(name, location_type, country_id, visited) VALUES ($1, $2, $3, $4) RETURNING id"
     values = [@name, @location_type, @country_id, @visited]
     results = SqlRunner.run(sql, values)
     @id = results[0]['id'].to_i
@@ -44,7 +44,7 @@ class Location
   end
 
   def update()
-    sql = "UPDATE locations SET (name, location_type, country_id, visited) = ($1, $2, $3) WHERE id = $4"
+    sql = "UPDATE locations SET (name, location_type, country_id, visited) = ($1, $2, $3, $4) WHERE id = $5"
     values = [@name, @location_type, @country_id, @visited, @id]
     SqlRunner.run( sql, values )
   end

@@ -32,8 +32,8 @@ class Country
   def self.find_by(column, value)
     sql = "SELECT * FROM countries WHERE #{column} = $1"
     values = [value]
-    country = SqlRunner.run(sql, values)[0]
-    return Country.new(country)
+    results = SqlRunner.run(sql, values)
+    return results.map { |result| Country.new(result) }
   end
 
   def save()
@@ -60,14 +60,14 @@ class Country
   end
 
   def locations()
-    sql = "SELECT FROM locations WHERE country_id = $1"
+    sql = "SELECT * FROM locations WHERE country_id = $1"
     values = [@id]
     results = SqlRunner.run( sql, values )
     return results.map { |result| Location.new(result) }
   end
 
   def sights()
-    sql = "SELECT * FROM sights INNER JOIN locations ON sights.location_id = locations.id WHERE locations.country_id = $1"
+    sql = "SELECT sights.* FROM sights INNER JOIN locations ON sights.location_id = locations.id WHERE locations.country_id = $1"
     values = [@id]
     results = SqlRunner.run( sql, values )
     return results.map { |result| Sight.new(result) }

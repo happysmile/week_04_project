@@ -32,9 +32,9 @@ CREATE TABLE locations(
 CREATE TABLE sights(
   id SERIAL PRIMARY KEY,
   name VARCHAR(255),
-  image_url VARCHAR,
   location_id INT REFERENCES locations(id),
-  sight_type_id INT REFERENCES sight_types(id),
+  type_id INT REFERENCES sight_types(id),
+  image_url VARCHAR(255) DEFAULT '',
   priority INT DEFAULT 0,
   visited BOOLEAN DEFAULT false
 );

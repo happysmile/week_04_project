@@ -33,7 +33,7 @@ class Sight
   end
 
   def save()
-    sql = "INSERT INTO sights(name, location_id, type_id, image_url, priority, visited) VALUES ($1, $2, $3, $4, $5) RETURNING id"
+    sql = "INSERT INTO sights(name, location_id, type_id, image_url, priority, visited) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id"
     values = [@name, @location_id, @type_id, @image_url, @priority, @visited]
     results = SqlRunner.run(sql, values)
     @id = results[0]['id'].to_i
@@ -46,7 +46,7 @@ class Sight
   end
 
   def update()
-    sql = "UPDATE sights SET (name, location_id, type_id, image_url, priority, visited) = ($1, $2, $3, $4, $5) WHERE id = $6"
+    sql = "UPDATE sights SET (name, location_id, type_id, image_url, priority, visited) = ($1, $2, $3, $4, $5, $6) WHERE id = $7"
     values = [@name, @location_id, @type_id, @image_url, @priority, @visited, @id]
     SqlRunner.run( sql, values )
   end
