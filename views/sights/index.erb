@@ -1,0 +1,32 @@
+<h1>Sights</h1>
+
+<table>
+  <tr>
+    <th>Location</th>
+    <th>Sight</th>
+    <th>Type</th>
+    <th>Priority</th>
+    <th>Visited</th>
+  </tr>
+  <% for sight in @sights %>
+  <tr>
+    <td>
+      <a href="#">
+        <%= sight.location().name %>
+      </a>
+    </td>
+    <td>
+      <a href="/sights/<%= sight.id  %>">
+        <%= sight.name %>
+      </a>
+    </td>
+    <td><%= sight.type().name  %></td>
+    <td><%= sight.priority.to_i %></td>
+    <td>
+      <% if sight.visited %>&#x2713;
+      <% else %>&#x2717;
+      <%end %>
+    </td>
+  </tr>
+  <% end %>
+</table>

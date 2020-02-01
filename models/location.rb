@@ -7,7 +7,7 @@ class Location
   def initialize(options)
     @id = options['id']
     @name = options['name']
-    @location_type = options['location_type']
+    @location_type = options['location_type'] if options['location_type']
     @country_id = options['country_id']
     @visited = options['visited'] if options['visited']
   end
@@ -19,6 +19,18 @@ class Location
 
   def self.list_all()
     sql = "SELECT * from locations"
+    results = SqlRunner.run(sql)
+    return results.map { |result| Location.new(result) }
+  end
+
+  def self.list_ticked()
+    sql = "SELECT * from locations WHERE visited = true"
+    results = SqlRunner.run(sql)
+    return results.map { |result| Location.new(result) }
+  end
+
+  def self.list_not_ticked()
+    sql = "SELECT * from locations WHERE visited = false"
     results = SqlRunner.run(sql)
     return results.map { |result| Location.new(result) }
   end

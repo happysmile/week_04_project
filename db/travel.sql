@@ -11,7 +11,7 @@ CREATE TABLE continents(
 
 CREATE TABLE countries(
   id SERIAL PRIMARY KEY,
-  continent_id INT REFERENCES continents(id),
+  continent_id INT REFERENCES continents(id) ON DELETE CASCADE,
   name VARCHAR(255),
   visited BOOLEAN DEFAULT false
 );
@@ -25,15 +25,15 @@ CREATE TABLE locations(
   id SERIAL PRIMARY KEY,
   name VARCHAR(255),
   location_type VARCHAR(255),
-  country_id INT REFERENCES countries(id),
+  country_id INT REFERENCES countries(id) ON DELETE CASCADE,
   visited BOOLEAN DEFAULT false
 );
 
 CREATE TABLE sights(
   id SERIAL PRIMARY KEY,
   name VARCHAR(255),
-  location_id INT REFERENCES locations(id),
-  type_id INT REFERENCES sight_types(id),
+  location_id INT REFERENCES locations(id) ON DELETE CASCADE,
+  type_id INT REFERENCES sight_types(id) ON DELETE CASCADE,
   image_url VARCHAR(255) DEFAULT '',
   priority INT DEFAULT 0,
   visited BOOLEAN DEFAULT false

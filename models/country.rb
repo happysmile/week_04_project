@@ -22,6 +22,18 @@ class Country
     return results.map { |result| Country.new(result) }
   end
 
+  def self.list_unticked()
+    sql = "SELECT * from countries WHERE visited = false"
+    results = SqlRunner.run(sql)
+    return results.map { |result| Country.new(result) }
+  end
+
+  def self.list_ticked()
+    sql = "SELECT * from countries WHERE visited = true"
+    results = SqlRunner.run(sql)
+    return results.map { |result| Country.new(result) }
+  end
+
   def self.find_by_id(id)
     sql = "SELECT * FROM countries WHERE id = $1"
     values = [id]

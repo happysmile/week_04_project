@@ -52,6 +52,7 @@ florence = Location.new({
   'country_id' => '110',
   'visited' => true
 })
+florence.save()
 trentino = Location.new({
   'name' => 'Trentino',
   'location_type' => 'region',
@@ -115,12 +116,35 @@ food.save()
 
 tour_eiffel = Sight.new({
   'name' => 'Tour Eiffel',
-  'location_id' => '5',
-  'type_id' => '1'
+  'location_id' => '6',
+  'type_id' => '1',
+  'priority' => '3'
 })
 tour_eiffel.save()
 
+trevi = Sight.new({
+  'name' => 'Trevi Fountain',
+  'location_id' => '2',
+  'type_id' => '1',
+  'priority' => '5'
+})
+trevi.save()
 
+colosseum = Sight.new({
+  'name' => 'Colosseum',
+  'location_id' => '2',
+  'type_id' => '1',
+  'priority' => '4'
+})
+colosseum.save()
+
+uffizi = Sight.new({
+  'name' => 'Uffizi Gallery',
+  'location_id' => '1',
+  'type_id' => '2',
+  'priority' => '1'
+  })
+uffizi.save()
 
 
 
