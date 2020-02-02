@@ -7,7 +7,8 @@ get '/sights' do
 end
 
 get '/sights/new' do
-  @sight = Sight.all()
+  @types = SightType.list_all()
+  @locations = Location.list_all()
   erb(:"sights/new")
 end
 
@@ -33,10 +34,17 @@ end
 get '/sights/:id/edit' do
   sight_id = params[:id]
   @sight = Sight.find_by_id(sight_id)
+  @types = SightType.list_all()
+  @locations = Location.list_all()
   erb(:"sights/edit")
 end
 
 post '/sights/:id' do
+  if (params[:visited] == 'visited')
+    params[:visited] = true
+  else
+    params[:visited] = false
+  end
   @sight = Sight.new(params)
   @sight.update()
   erb(:"sights/updated")

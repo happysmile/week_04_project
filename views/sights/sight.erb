@@ -17,7 +17,7 @@
     <tr>
       <td><%= @sight.name %></td>
       <td><%= @sight.type().name %></td>
-      <td><%= @sight.country()["name"] %></td>
+      <td><%= @sight.country().name %></td>
       <td><%= @sight.location().name %></td>
       <td><%= @sight.priority %></td>
       <td><% if @sight.visited %>&#x2713;<% else %>&#x2717;<%end %></td>
@@ -31,6 +31,6 @@
     <input type="submit" name="delete" value="Delete">
   </form>
 
-  <form action="/sights/<%= @sight.id %>edit/" method="get">
+  <form action="/sights/<%= @sight.id %>/edit" method="get">
     <input type="submit" name="update" value="Update">
   </form>

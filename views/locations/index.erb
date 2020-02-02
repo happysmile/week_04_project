@@ -1,1 +1,30 @@
 <h1>Locations</h1>
+
+<table>
+  <tr>
+    <th>Country</th>
+    <th>Location</th>
+    <th>Type</th>
+  </tr>
+  <% for location in @locations %>
+  <tr>
+    <td>
+      <a href="#">
+        <%= location.country().name %>
+      </a>
+    </td>
+    <td>
+      <a href="/locations/<%= location.id %>">
+        <%= location.name %>
+      </a>
+    </td>
+    <td>
+      <a href="#">
+        <%= location.location_type %>
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>
+
+<p><a href="/locations/new">Add a location</a></p>

@@ -1,0 +1,38 @@
+<h1>Location updated!</h1>
+
+<table>
+  <tr>
+    <th>Country</th>
+    <th>Location</th>
+    <th>Type</th>
+    <th>Visited</th>
+  </tr>
+  <tr>
+    <td>
+      <a href="#"><%= @location.country().name %></a>
+    </td>
+    <td>
+      <%= @location.name %>
+    </td>
+    <td>
+      <%= @location.location_type %>
+    </td>
+    <td>
+      <% if @location.visited %>&#x2713;
+      <% else %>&#x2717;
+      <%end %>
+    </td>
+  </tr>
+</table>
+
+<% if (@location.sights().count > 0)
+sights = @location.sights()%>
+<h2>Sights in this location</h2>
+<ul>
+  <% for sight in sights %>
+   <li><a href="/sights/<%=sight.id %>"><%=sight.name %></a></li>
+  <% end %>
+</ul>
+<%end %>
+
+<p><a href="/locations">View all locations</a></p>

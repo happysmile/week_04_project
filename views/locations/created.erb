@@ -1,0 +1,22 @@
+<h1>New location successfully created!</h1>
+
+<table>
+  <tr>
+    <th>Country</th>
+    <th>Location</th>
+    <th>Type</th>
+  </tr>
+  <tr>
+    <td>
+      <a href="#"><%= @location.country().name %></a>
+    </td>
+    <td>
+      <%= @location.name %>
+    </td>
+    <td>
+      <%= @location.location_type %>
+    </td>
+  </tr>
+</table>
+
+<p><a href="/locations">View all locations</a></p>

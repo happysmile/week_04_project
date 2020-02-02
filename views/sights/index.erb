@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>Country</th>
     <th>Location</th>
     <th>Sight</th>
     <th>Type</th>
@@ -12,6 +13,11 @@
   <tr>
     <td>
       <a href="#">
+        <%= sight.country().name %>
+      </a>
+    </td>
+    <td>
+      <a href="/locations/<%= sight.location().id%>">
         <%= sight.location().name %>
       </a>
     </td>

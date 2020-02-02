@@ -65,7 +65,8 @@ class Sight
   def country()
     sql = "SELECT countries.* FROM countries INNER JOIN locations ON countries.id = locations.country_id WHERE locations.id = $1"
     values = [@location_id]
-    countries = SqlRunner.run(sql, values)
+    results = SqlRunner.run(sql, values)
+    countries = results.map { |result| Country.new(result) }
     return countries[0]
   end
 
