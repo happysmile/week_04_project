@@ -1,0 +1,17 @@
+<h1>Sight types</h1>
+
+<ul>
+  <% for sight_type in @sight_types %>
+    <li>
+      <%= sight_type.name %>
+      <form action="/sight-types/<%= sight_type.id %>/delete" method="post">
+        <input type="submit" name="delete" value="Delete">
+      </form>
+      <form action="/sight-types/<%= sight_type.id %>/edit" method="get">
+        <input type="submit" name="update" value="Update">
+      </form>
+    </li>
+  <% end %>
+</ul>
+
+<p><a href="/sight-types/new">Add a sight type</a></p>

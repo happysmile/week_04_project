@@ -1,0 +1,9 @@
+<h1>Edit sight type</h1>
+
+<form action="/sight-types/<%=@sight_type.id %>" method="POST">
+  <fieldset>
+    <label for="name">Name</label>
+    <input type="text" name="name" value="<%=@sight_type.name %>">
+  </fieldset>
+  <input type="submit" value="SAVE">
+</form>
