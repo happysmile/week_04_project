@@ -34,11 +34,32 @@ class Sight
 
   def self.search(params)
     sql = "SELECT * FROM sights"
-    if (params.count() != 0)
+    if (params.values.any? { |value| value != '' } )
+      first_not_empty = params.values.find{ |value| value != '' }
       sql += " WHERE "
-      if (params[:name] != '')
-        sql += "name LIKE '%#{params[:name]}%'"
-      end
+        if (params[:name] != '')
+          sql += "name LIKE '%#{params[:name]}%'"
+        elsif (params[:type_id] != '')
+          if (params[:type_id] != first_not_empty)
+            sql += " AND "
+          end
+          sql += "type_id = #{params[:type_id]}"
+        elsif (params[:location_id] != '')
+          if (params[:location_id] != first_not_empty)
+            sql += " AND "
+          end
+          sql += "location_id = #{params[:location_id]}"
+        elsif (params[:priority] != '')
+          if (params[:priority] != first_not_empty)
+            sql += " AND "
+          end
+          sql += "priority = #{params[:priority]}"
+        elsif (params[:visited] != '')
+          if (params[:visited] != first_not_empty)
+            sql += " AND "
+          end
+          sql += "visited = #{params[:visited]}"
+        end
     end
     results = SqlRunner.run(sql)
     return results.map { |result| Sight.new(result) }
@@ -91,7 +112,6 @@ class Sight
 
   def other_sights_in_same_country()
     country_id = country()['id']
-    p country_id
     sql = "SELECT DISTINCT sights.* FROM sights INNER JOIN locations ON locations.country_id = $1 WHERE  NOT sights.id = $2"
     values = [country_id, @id]
     results = SqlRunner.run(sql, values)
