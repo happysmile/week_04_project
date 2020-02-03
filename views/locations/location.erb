@@ -2,18 +2,18 @@
 
 <table>
   <tr>
-    <th>Country</th>
     <th>Location</th>
+    <th>Country</th>
     <th>Type</th>
     <th>Visited</th>
   </tr>
   <tr>
     <td>
-      <a href="#"><%= @location.country().name %></a>
-    </td>
-    <td>
       <%= @location.name %>
     </td>
+    <td>
+      <a href="#"><%= @location.country().name %></a>
+    </td>    
     <td>
       <%= @location.location_type %>
     </td>

@@ -2,31 +2,31 @@
 
 <table>
   <tr>
-    <th>Country</th>
-    <th>Location</th>
     <th>Sight</th>
     <th>Type</th>
+    <th>Location</th>
+    <th>Country</th>
     <th>Priority</th>
     <th>Visited</th>
   </tr>
   <% for sight in @sights %>
   <tr>
     <td>
-      <a href="#">
-        <%= sight.country().name %>
+      <a href="/sights/<%= sight.id  %>">
+        <%= sight.name %>
       </a>
     </td>
+    <td><%= sight.type().name %></td>
     <td>
       <a href="/locations/<%= sight.location().id%>">
         <%= sight.location().name %>
       </a>
     </td>
     <td>
-      <a href="/sights/<%= sight.id  %>">
-        <%= sight.name %>
+      <a href="#">
+        <%= sight.country().name %>
       </a>
     </td>
-    <td><%= sight.type().name  %></td>
     <td><%= sight.priority.to_i %></td>
     <td>
       <% if sight.visited %>&#x2713;

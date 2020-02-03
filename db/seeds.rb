@@ -36,6 +36,7 @@ require("pry")
 # })
 # antarctica.save()
 #
+# actually they are in seeds.rb
 
 # Locations
 
@@ -124,7 +125,7 @@ tour_eiffel.save()
 
 trevi = Sight.new({
   'name' => 'Trevi Fountain',
-  'location_id' => '2',
+  'location_id' => '1',
   'type_id' => '1',
   'priority' => '5'
 })
@@ -132,7 +133,7 @@ trevi.save()
 
 colosseum = Sight.new({
   'name' => 'Colosseum',
-  'location_id' => '2',
+  'location_id' => '1',
   'type_id' => '1',
   'priority' => '4'
 })
@@ -140,7 +141,7 @@ colosseum.save()
 
 uffizi = Sight.new({
   'name' => 'Uffizi Gallery',
-  'location_id' => '1',
+  'location_id' => '2',
   'type_id' => '2',
   'priority' => '1'
   })

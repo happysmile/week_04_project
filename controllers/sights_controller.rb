@@ -6,6 +6,17 @@ get '/sights' do
   erb(:"sights/index")
 end
 
+get '/search' do
+  @locations = Location.list_all()
+  @sight_types = SightType.list_all()
+  erb(:"sights/search" )
+end
+
+post '/search-results' do
+  @sights = Sight.search(params)
+  erb(:"sights/index")
+end
+
 get '/sights/new' do
   @types = SightType.list_all()
   @locations = Location.list_all()

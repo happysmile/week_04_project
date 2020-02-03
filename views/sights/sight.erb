@@ -8,8 +8,8 @@
   <thead>
     <th>Name</th>
     <th>Type</th>
-    <th>Country</th>
     <th>Location</th>
+    <th>Country</th>    
     <th>Priority</th>
     <th>Visited</th>
   </thead>
@@ -17,8 +17,8 @@
     <tr>
       <td><%= @sight.name %></td>
       <td><%= @sight.type().name %></td>
-      <td><%= @sight.country().name %></td>
       <td><%= @sight.location().name %></td>
+      <td><%= @sight.country().name %></td>
       <td><%= @sight.priority %></td>
       <td><% if @sight.visited %>&#x2713;<% else %>&#x2717;<%end %></td>
     </tr>

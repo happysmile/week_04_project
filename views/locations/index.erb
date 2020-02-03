@@ -2,17 +2,12 @@
 
 <table>
   <tr>
-    <th>Country</th>
     <th>Location</th>
+    <th>Country</th>
     <th>Type</th>
   </tr>
   <% for location in @locations %>
   <tr>
-    <td>
-      <a href="#">
-        <%= location.country().name %>
-      </a>
-    </td>
     <td>
       <a href="/locations/<%= location.id %>">
         <%= location.name %>
@@ -20,8 +15,11 @@
     </td>
     <td>
       <a href="#">
-        <%= location.location_type %>
+        <%= location.country().name %>
       </a>
+    </td>
+    <td>
+        <%= location.location_type %>
     </td>
   </tr>
   <% end %>

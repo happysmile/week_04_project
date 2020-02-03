@@ -32,6 +32,18 @@ class Sight
     return Sight.new(sight)
   end
 
+  def self.search(params)
+    sql = "SELECT * FROM sights"
+    if (params.count() != 0)
+      sql += " WHERE "
+      if (params[:name] != '')
+        sql += "name LIKE '%#{params[:name]}%'"
+      end
+    end
+    results = SqlRunner.run(sql)
+    return results.map { |result| Sight.new(result) }
+  end
+
   def save()
     sql = "INSERT INTO sights(name, location_id, type_id, image_url, priority, visited) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id"
     values = [@name, @location_id, @type_id, @image_url, @priority, @visited]
