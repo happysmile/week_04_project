@@ -64,7 +64,7 @@ trentino.save()
 seoul = Location.new({
   'name' => 'Seoul',
   'location_type' => 'city',
-  'country_id' => '119',
+  'country_id' => '206',
   'visited' => false
 })
 seoul.save()
@@ -82,6 +82,34 @@ paris = Location.new({
   'visited' => false
 })
 paris.save()
+busan = Location.new({
+  'name' => 'Busan',
+  'location_type' => 'city',
+  'country_id' => '206',
+  'visited' => false
+})
+busan.save()
+edinburgh = Location.new({
+  'name' => 'Edinburgh',
+  'location_type' => 'city',
+  'country_id' => '235',
+  'visited' => false
+})
+edinburgh.save()
+glasgow = Location.new({
+  'name' => 'Glasgow',
+  'location_type' => 'city',
+  'country_id' => '235',
+  'visited' => false
+})
+glasgow.save()
+agra = Location.new({
+  'name' => 'Agra',
+  'location_type' => 'city',
+  'country_id' => '103',
+  'visited' => false
+})
+agra.save()
 
 # sight type
 monument = SightType.new({
@@ -119,7 +147,8 @@ tour_eiffel = Sight.new({
   'name' => 'Tour Eiffel',
   'location_id' => '6',
   'type_id' => '1',
-  'priority' => '3'
+  'priority' => '3',
+  'visited' => true
 })
 tour_eiffel.save()
 
@@ -127,7 +156,8 @@ trevi = Sight.new({
   'name' => 'Trevi Fountain',
   'location_id' => '1',
   'type_id' => '1',
-  'priority' => '5'
+  'priority' => '5',
+  'visited' => true
 })
 trevi.save()
 
@@ -135,7 +165,8 @@ colosseum = Sight.new({
   'name' => 'Colosseum',
   'location_id' => '1',
   'type_id' => '1',
-  'priority' => '4'
+  'priority' => '4',
+  'visited' => false
 })
 colosseum.save()
 
@@ -143,7 +174,8 @@ uffizi = Sight.new({
   'name' => 'Uffizi Gallery',
   'location_id' => '2',
   'type_id' => '2',
-  'priority' => '1'
+  'priority' => '1',
+  'visited' => false
   })
 uffizi.save()
 

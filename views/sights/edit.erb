@@ -31,7 +31,11 @@
   </fieldset>
   <fieldset>
     <label for="priority">Priority</label>
-    <input type="INT" name="priority" value="<%= @sight.priority %>">
+    <select name="priority">
+      <% for n in 0..5 do %>
+        <option <% if (@sight.priority).to_i == n %>selected<% end %> value="<%= n %>"><%= n %></option>
+      <% end %>
+    </select>
   </fieldset>
   <fieldset>
     <label for="visited">Visited</label>

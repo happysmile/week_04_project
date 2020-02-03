@@ -1,0 +1,86 @@
+body {
+	background-color: white;
+  margin: 0;
+	padding: 0;
+	font: 67.5% Verdana, Arial, serif;
+	color: black;
+  text-align: center;
+}
+
+p, li, label, input, td, th {
+	font-size: 1.2em;
+	line-height: 1;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+a, th {
+  color: purple;
+}
+
+img {
+	border-style: none;
+}
+
+ul {
+ margin: 0;
+ padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+table {
+  margin: auto;
+  border-collapse: collapse;
+}
+
+
+/* NAVIGATION */
+nav {
+  border-bottom: 1px purple solid;
+  margin-bottom: 2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+}
+
+nav li {
+  list-style: none;
+  margin-left: 1em;
+  padding: 1.5em 0;
+}
+
+/* FORMS */
+
+form {
+  margin: auto;
+}
+
+fieldset {
+  border: none;
+  margin: auto;
+  padding: 1em 0;
+}
+
+input, select {
+  border: 1px purple solid;
+  background-color: white;
+  color: black;
+}
+
+label {
+  color: purple;
+  text-align: right;
+}

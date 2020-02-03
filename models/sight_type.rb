@@ -15,7 +15,7 @@ class SightType
   end
 
   def self.list_all()
-    sql = "SELECT * from sight_types"
+    sql = "SELECT * from sight_types ORDER BY name"
     results = SqlRunner.run(sql)
     return results.map { |result| SightType.new(result) }
   end

@@ -20,7 +20,7 @@ class Sight
   end
 
   def self.list_all()
-    sql = "SELECT * from sights"
+    sql = "SELECT * from sights ORDER BY name"
     results = SqlRunner.run(sql)
     return results.map { |result| Sight.new(result) }
   end
@@ -61,6 +61,7 @@ class Sight
           sql += "visited = #{params[:visited]}"
         end
     end
+    sql += " ORDER BY name"
     results = SqlRunner.run(sql)
     return results.map { |result| Sight.new(result) }
   end
@@ -91,7 +92,8 @@ class Sight
   def continent()
     sql = "SELECT continents.* FROM continents INNER JOIN countries ON continents.id = countries.continent_id INNER JOIN locations ON countries.id = locations.country_id WHERE locations.id = $1"
     values = [@location_id]
-    continents = SqlRunner.run(sql, values)
+    results = SqlRunner.run(sql, values)
+    continents = results.map { |result| Continent.new(result) }
     return continents[0]
   end
 
@@ -104,7 +106,7 @@ class Sight
   end
 
   def other_sights_in_same_location()
-    sql = "SELECT * FROM sights WHERE location_id = $1 AND NOT id = $2"
+    sql = "SELECT * FROM sights WHERE location_id = $1 AND NOT id = $2 ORDER BY name"
     values = [@location_id, @id]
     results = SqlRunner.run(sql, values)
     return results.map { |result| Sight.new(result) }
@@ -112,15 +114,17 @@ class Sight
 
   def other_sights_in_same_country()
     country_id = country()['id']
-    sql = "SELECT DISTINCT sights.* FROM sights INNER JOIN locations ON locations.country_id = $1 WHERE  NOT sights.id = $2"
+    sql = "SELECT DISTINCT sights.* FROM sights INNER JOIN locations ON locations.country_id = $1 WHERE  NOT sights.id = $2 ORDER BY name"
     values = [country_id, @id]
     results = SqlRunner.run(sql, values)
     return results.map { |result| Sight.new(result) }
   end
 
-  def same_type_same_country()
-    other_sights = other_sights_in_same_country()
-    return other_sights.select {|sight| (sight.type_id == @type_id)}
+  def same_type()
+    sql = "SELECT * FROM sights WHERE type_id = $1 ORDER BY name"
+    values = [@type_id]
+    results = SqlRunner.run(sql, values)
+    return results.map { |result| Sight.new(result) }
   end
 
   def type()

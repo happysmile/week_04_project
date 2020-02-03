@@ -52,5 +52,6 @@ class Continent
     results = SqlRunner.run( sql, values )
     return results.map { |result| Country.new(result) }
   end
-  
+
+
 end

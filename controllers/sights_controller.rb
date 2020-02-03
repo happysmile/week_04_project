@@ -13,6 +13,11 @@ get '/search' do
 end
 
 post '/search-results' do
+  if (params[:visited] == 'visited')
+    params[:visited] = true
+  else
+    params[:visited] = false
+  end
   @sights = Sight.search(params)
   erb(:"sights/index")
 end
@@ -24,9 +29,21 @@ get '/sights/new' do
 end
 
 post '/sights' do
-  @sight = Sight.new(params)
-  @sight.save()
-  erb(:"sights/created")
+  if ( (params[:name] == '') || (params[:location_id] == '') || (params[:type_id] == '') )
+    @types = SightType.list_all()
+    @locations = Location.list_all()
+    @error_message = "Name, location and type are required"
+    erb(:"sights/new")
+  else
+    if (params[:visited] == 'visited')
+      params[:visited] = true
+    else
+      params[:visited] = false
+    end
+    @sight = Sight.new(params)
+    @sight.save()
+    erb(:"sights/created")
+  end
 end
 
 get '/sights/:id' do

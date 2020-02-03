@@ -1,4 +1,7 @@
 <h2><%= @sight.name() %></h2>
+<p><a href="#"><%= @sight.continent().name %></a> > 
+  <a href="#"><%= @sight.country().name %></a> >
+  <a href="#"><%= @sight.location().name %></a></p>
 
 <% if (@sight.image_url && @sight.image_url != '') %>
 <img src="<%= @sight.image_url %>" alt="<%= @sight.name %>">
@@ -9,7 +12,7 @@
     <th>Name</th>
     <th>Type</th>
     <th>Location</th>
-    <th>Country</th>    
+    <th>Country</th>
     <th>Priority</th>
     <th>Visited</th>
   </thead>

@@ -1,12 +1,16 @@
 <h2>Add a sight to the wishlist</h2>
 
+<% if (defined? @error_message != nil) %>
+<p class="error"><%=@error_message %></p>
+<% end %>
+
 <form action="/sights" method="POST">
   <fieldset>
-    <label for="name">Name</label>
+    <label for="name">* Name</label>
     <input type="text" name="name">
   </fieldset>
   <fieldset>
-    <label for="location_id">Location</label>
+    <label for="location_id">* Location</label>
     <select name="location_id">
     <option value="">Please choose</option>
       <% for location in @locations %>
@@ -16,7 +20,7 @@
     <p><a href="/locations/new">Add location</a></p>
   </fieldset>
   <fieldset>
-    <label for="type_id">Type</label>
+    <label for="type_id">* Type</label>
     <select name="type_id">
     <option value="">Please choose</option>
       <% for type in @types %>
@@ -31,7 +35,14 @@
   </fieldset>
   <fieldset>
     <label for="priority">priority</label>
-    <input type="INT" name="priority">
+    <select name="priority">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
   </fieldset>
   <input type="submit" value="SAVE">
 </form>

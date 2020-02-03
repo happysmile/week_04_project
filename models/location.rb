@@ -18,19 +18,7 @@ class Location
   end
 
   def self.list_all()
-    sql = "SELECT * from locations"
-    results = SqlRunner.run(sql)
-    return results.map { |result| Location.new(result) }
-  end
-
-  def self.list_ticked()
-    sql = "SELECT * from locations WHERE visited = true"
-    results = SqlRunner.run(sql)
-    return results.map { |result| Location.new(result) }
-  end
-
-  def self.list_not_ticked()
-    sql = "SELECT * from locations WHERE visited = false"
+    sql = "SELECT * from locations ORDER BY name"
     results = SqlRunner.run(sql)
     return results.map { |result| Location.new(result) }
   end
@@ -66,7 +54,7 @@ class Location
   end
 
   def sights()
-    sql = "SELECT * from sights WHERE sights.location_id = $1"
+    sql = "SELECT * from sights WHERE sights.location_id = $1 ORDER BY name"
     values = [@id]
     results = SqlRunner.run(sql, values)
     return results.map { |result| Sight.new(result) }
