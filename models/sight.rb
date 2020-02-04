@@ -43,6 +43,13 @@ class Sight
     end
   end
 
+  # def self.find_by(column, value)
+  #   sql = "SELECT * FROM sights WHERE #{column} = $1"
+  #   values = [value]
+  #   results = SqlRunner.run(sql, values)
+  #   return results.map { |result| Sight.new(result) }
+  # end
+
   def self.search(params)
     sql = "SELECT * FROM sights"
     if (params.values.any? { |value| value != '' } )
@@ -142,13 +149,13 @@ class Sight
     return SightType.find_by_id(@type_id)
   end
 
-  def tick_off()
-    @visited = true
-    update()
-    location = location()
-    location.tick_off()
-    country = country()
-    country.tick_off()
-  end
+  # def tick_off()
+  #   @visited = true
+  #   update()
+  #   location = location()
+  #   location.tick_off()
+  #   country = country()
+  #   country.tick_off()
+  # end
 
 end

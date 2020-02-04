@@ -71,11 +71,11 @@ class Location
     return results.map { |result| Sight.new(result) }
   end
 
-  def tick_off()
-    @visited = true
-    update()
-    country = country()
-    country.tick_off()
-  end
+  # def tick_off()
+  #   @visited = true
+  #   update()
+  #   country = country()
+  #   country.tick_off()
+  # end
 
 end

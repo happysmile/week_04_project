@@ -1,6 +1,6 @@
 <h1><%= @sight.name() %></h1>
 <p><a href="#"><%= @sight.continent().name %></a> >
-  <a href="#"><%= @sight.country().name %></a> >
+  <a href="/countries/<%= @sight.country().id %>"><%= @sight.country().name %></a> >
   <a href="/locations/<%= @sight.location().id %>"><%= @sight.location().name %></a></p>
 
 <% if (@sight.image_url && @sight.image_url != '') %>

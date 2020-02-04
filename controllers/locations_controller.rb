@@ -15,10 +15,6 @@ post '/locations' do
     @error_message = "Please give it a name!"
     @countries = Country.list_all()
     erb(:"locations/new")
-  elsif ( Location.find_by_name(params[:name]) != nil )
-    @error_message = "Location already exists!"
-    @countries = Country.list_all()
-    erb(:"locations/new")
   else
     @location = Location.new(params)
     @location.save()
@@ -49,12 +45,6 @@ end
 post '/locations/:id' do
   if (params[:name] == '')
     @error_message = "Please give it a name!"
-    location_id = params[:id]
-    @location = Location.find_by_id(location_id)
-    @countries = Country.list_all()
-    erb(:"locations/edit")
-  elsif ( Location.find_by_name(params[:name]) != nil )
-    @error_message = "Location already exists!"
     location_id = params[:id]
     @location = Location.find_by_id(location_id)
     @countries = Country.list_all()

@@ -22,16 +22,20 @@ class Country
     return results.map { |result| Country.new(result) }
   end
 
-  def self.list_unticked()
-    sql = "SELECT * from countries WHERE visited = false"
-    results = SqlRunner.run(sql)
-    return results.map { |result| Country.new(result) }
-  end
-
-  def self.list_ticked()
-    sql = "SELECT * from countries WHERE visited = true"
-    results = SqlRunner.run(sql)
-    return results.map { |result| Country.new(result) }
+  def self.list_listed()
+    # gives an array of countries whose sights are in the wishlist
+    # also eliminates duplicates in the results
+    sights = Sight.list_all()
+    results = []
+    for sight in sights
+      countries_already_in_list = results.map { |obj| obj.id }
+      country_id = sight.country().id
+      if ( countries_already_in_list.include?(country_id) == false )
+        country = find_by_id(country_id)
+        results.push(country)
+      end
+    end
+    return results
   end
 
   def self.find_by_id(id)
@@ -85,9 +89,9 @@ class Country
     return results.map { |result| Sight.new(result) }
   end
 
-  def tick_off()
-    @visited = true
-    update()
-  end
+  # def tick_off()
+  #   @visited = true
+  #   update()
+  # end
 
 end
