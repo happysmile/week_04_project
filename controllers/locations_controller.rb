@@ -11,8 +11,8 @@ get '/locations/new' do
 end
 
 post '/locations' do
-  if (params[:name] == '')
-    @error_message = "Please give it a name!"
+  if (params[:name] == '' || params[:location_id]== '')
+    @error_message = "Name and location are required"
     @countries = Country.list_all()
     erb(:"locations/new")
   else

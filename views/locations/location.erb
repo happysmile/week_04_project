@@ -19,17 +19,18 @@
   </tr>
 </table>
 
-<form class="button_only" action="/locations/<%= @location.id %>/delete" method="post">
-  <fieldset>
-    <input type="submit" name="delete" value="Delete">
-  </fieldset>
-</form>
-
-<form action="/locations/<%= @location.id %>/edit" method="get">
-  <fieldset>
-    <input type="submit" name="update" value="Update">
-  </fieldset>
-</form>
+<div class="buttons">
+  <form class="button_only" action="/locations/<%= @location.id %>/delete" method="post">
+    <fieldset>
+      <input type="submit" name="delete" value="Delete">
+    </fieldset>
+  </form>
+  <form class="button_only" action="/locations/<%= @location.id %>/edit" method="get">
+    <fieldset>
+      <input type="submit" name="update" value="Update">
+    </fieldset>
+  </form>
+</div>
 
 <% if (@location.sights().count > 0)
 sights = @location.sights()%>

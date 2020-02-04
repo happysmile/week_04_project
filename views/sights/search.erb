@@ -32,7 +32,14 @@
       <option value="<%=n %>"><%=n %></option>
       <% end %>
     </select>
-  </fieldset> 
+  </fieldset>
+  <fieldset>
+      <label for="visited">Visited?</label>
+      <br>
+      Yes: <input type="radio" name="visited" value="visited"><br>
+      No: <input type="radio" name="visited" value="not_visited"><br>
+      Any: <input type="radio" name="visited" value="">
+  </fieldset>
   <fieldset>
     <input type="submit" value="Search">
   </fieldset>

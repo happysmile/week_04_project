@@ -16,23 +16,23 @@ body {
 }
 
 h1 {
-	font-size: 1.6em;
+	font-size: 1.4rem;
 }
 
 h2 {
-	font-size: 1.5em;
+	font-size: 1.3rem;
 }
 
 h3 {
-	font-size: 1.4em;
+	font-size: 1.2rem;
 }
 
 h4 {
-	font-size: 1.3em;
+	font-size: 1.1rem;
 }
 
-p, li, label, input, td, th {
-	font-size: 1.2em;
+p, li, label, input, td, th, dl, dd, dt, option {
+	font-size: 1rem;
 	line-height: 1;
 }
 
@@ -60,7 +60,7 @@ ul {
 
 li {
   list-style: none;
-	margin-bottom: 1em;
+	margin-bottom: 1rem;
 }
 
 table {
@@ -71,7 +71,7 @@ table {
 /* NAVIGATION */
 nav {
   border-bottom: 1px purple solid;
-  margin-bottom: 2em;
+  margin-bottom: 1rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -87,8 +87,8 @@ nav ul {
 
 nav li {
   list-style: none;
-  margin: 0 1em 0 0;
-  padding: 1.5em 0;
+  margin: 0 1rem 0 0;
+  padding: 1.5rem 0;
 }
 
 nav li:before {
@@ -99,36 +99,66 @@ nav li:before {
 /* FORMS */
 
 form {
-  margin: auto;
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
+	margin: auto;
+}
+
+.buttons {
+	display: flex;
+	flex-direction: row;
 	justify-content: center;
 }
 
 .button_only {
-
+	margin: 0.5rem;
 }
 
 fieldset {
   border: none;
   margin: auto;
-  padding: 1em 0;
-	display: flex;
-	flex-direction: row;
+  padding: 1rem 0;
 }
 
 input, select {
   border: 1px purple solid;
 	background-color: white;
   color: purple;
-	width: 300px;
+	width: 200px;
 }
 
 input[Type="submit"] {
 	color: white;
   background-color: purple;
+	width: 150px;
+}
+
+input[Type="radio"] {
+	width: auto;
 }
 
 label {
   color: purple;
+}
+
+/* Definition Lists */
+
+dl {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+dt {
+	text-align: left;
+	font-weight: bold;
+}
+
+.error {
+	font-weight: bold;
+	border: 1px solid red;
+	color: red;
+	margin: auto;
+	padding: 1rem;
 }

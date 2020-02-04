@@ -29,12 +29,5 @@ class TestCountry < MiniTest::Test
     assert_equal("Europe", @italy.continent().name)
   end
 
-  def test_locations()
-    
-  end
-
-  def test_sights()
-
-  end
 
 end

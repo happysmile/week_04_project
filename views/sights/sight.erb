@@ -33,16 +33,17 @@
   </tbody>
 </table>
 
-<form class="button_only" action="/sights/<%= @sight.id %>/delete" method="post">
-  <fieldset>
-    <input type="submit" name="delete" value="Delete">
-  </fieldset>
-</form>
-
-<form class="button_only" action="/sights/<%= @sight.id %>/edit" method="get">
-  <fieldset>
-    <input type="submit" name="update" value="Update">
-  </fieldset>
-</form>
+<div class="buttons">
+  <form class="button_only" action="/sights/<%= @sight.id %>/delete" method="post">
+    <fieldset>
+      <input type="submit" name="delete" value="Delete">
+    </fieldset>
+  </form>
+  <form class="button_only" action="/sights/<%= @sight.id %>/edit" method="get">
+    <fieldset>
+      <input type="submit" name="update" value="Update">
+    </fieldset>
+  </form>
+</div>
 
 <p><a href="/sights">View all sights</a></p>

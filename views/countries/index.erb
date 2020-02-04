@@ -3,20 +3,21 @@
 <ul>
   <% for country in @countries %>
     <li>
-      <h3>Country: <a href="/countries/<%= country.id %>"><%= country.name %></a></h3>
+      <h2>Country: <a href="/countries/<%= country.id %>"><%= country.name %></a></h2>
       <ul>
         <% for location in country.locations() %>
-          <li>
-            <p>Location: <%= location.name %></p>
-            <ul>
-              <% for sight in location.sights() %>
-                <li>Sight: <a href="/sights/<%= sight.id %>"><%= sight.name %></a></li>
-              <% end %>
-            </ul>
-          </li>
+          <dl>
+            <dt>Location: <%= location.name %></dt>
+            <dd>
+              <ul>
+                <% for sight in location.sights() %>
+                  <li>Sight: <a href="/sights/<%= sight.id %>"><%= sight.name %></a></li>
+                <% end %>
+              </ul>
+            </dd>
+          </dl>
         <% end %>
       </ul>
-      <hr>
     </li>
   <% end %>
 </ul>

@@ -14,11 +14,13 @@ get '/search' do
 end
 
 post '/search-results' do
-  # if (params[:visited] == "visited")
-  #   params[:visited] = true
-  # elsif (params[:visited] == "not_visited")
-  #   params[:visited] = false
-  # end
+  if (params[:visited] == "visited")
+    params[:visited] = true
+  elsif (params[:visited] == "not_visited")
+    params[:visited] = false
+  else
+    params[:visited] = ''
+  end
   @sights = Sight.search(params)
   erb(:"sights/index")
 end
