@@ -1,7 +1,7 @@
-<h2><%= @sight.name() %></h2>
-<p><a href="#"><%= @sight.continent().name %></a> > 
+<h1><%= @sight.name() %></h1>
+<p><a href="#"><%= @sight.continent().name %></a> >
   <a href="#"><%= @sight.country().name %></a> >
-  <a href="#"><%= @sight.location().name %></a></p>
+  <a href="/locations/<%= @sight.location().id %>"><%= @sight.location().name %></a></p>
 
 <% if (@sight.image_url && @sight.image_url != '') %>
 <img src="<%= @sight.image_url %>" alt="<%= @sight.name %>">

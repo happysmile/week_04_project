@@ -179,7 +179,32 @@ uffizi = Sight.new({
   })
 uffizi.save()
 
+taj_mahal = Sight.new({
+  'name' => 'Taj Mahal',
+  'location_id' => '10',
+  'type_id' => '1',
+  'priority' => '2',
+  'visited' => false
+  })
+taj_mahal.save()
 
+mozza = Sight.new({
+  'name' => 'Mozza',
+  'location_id' => '9',
+  'type_id' => '7',
+  'priority' => '2',
+  'visited' => true
+  })
+mozza.save()
+
+arthurs_seat = Sight.new({
+  'name' => 'Arthur\'s Seat',
+  'location_id' => '8',
+  'type_id' => '4',
+  'priority' => '1',
+  'visited' => true
+  })
+arthurs_seat.save()
 
 binding.pry
 nil

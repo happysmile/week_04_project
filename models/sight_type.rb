@@ -27,6 +27,17 @@ class SightType
     return SightType.new(sight_type)
   end
 
+  def self.find_by_name(name)
+    sql = "SELECT * FROM sight_types WHERE name = $1"
+    values = [name]
+    sight_types = SqlRunner.run(sql, values)
+    if sight_types.count() > 0
+      return SightType.new(sight_types[0])
+    else
+      return nil
+    end
+  end
+
   def save()
     sql = "INSERT INTO sight_types(name) VALUES ($1) RETURNING id"
     values = [@name]
@@ -41,9 +52,20 @@ class SightType
   end
 
   def update()
-    sql = "UPDATE sight_types SET (name) = ($1) WHERE (id) = ($2)"
+    sql = "UPDATE sight_types SET name = $1 WHERE id = $2"
     values = [@name, @id]
     SqlRunner.run( sql, values )
+  end
+
+  def sights()
+    sql = "SELECT * FROM sights WHERE type_id = $1 ORDER BY name"
+    values = [@id]
+    results = SqlRunner.run(sql, values)
+    if ( results.count() > 0 )
+      return results.map { |result| Sight.new(result) }
+    else
+      return nil
+    end
   end
 
 end

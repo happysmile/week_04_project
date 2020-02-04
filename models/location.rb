@@ -30,6 +30,17 @@ class Location
     return Location.new(location)
   end
 
+  def self.find_by_name(name)
+    sql = "SELECT * FROM locations WHERE name = $1"
+    values = [name]
+    locations = SqlRunner.run(sql, values)
+    if locations.count() > 0
+      return Location.new(locations[0])
+    else
+      return nil
+    end
+  end
+
   def save()
     sql = "INSERT INTO locations(name, location_type, country_id, visited) VALUES ($1, $2, $3, $4) RETURNING id"
     values = [@name, @location_type, @country_id, @visited]

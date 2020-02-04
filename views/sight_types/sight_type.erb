@@ -1,0 +1,15 @@
+<h1><%= @sight_type.name %></h1>
+
+<% if @sight_type.sights() != nil
+sights = @sight_type.sights()%>
+
+  <h2>Other sights listed as "<%= @sight_type.name %>"</h2>
+  <ul>
+    <% for sight in sights %>
+     <li><a href="/sights/<%=sight.id %>"><%=sight.name %></a></li>
+    <% end %>
+  </ul>
+
+<%end %>
+
+<p><a href="/sight-types">View all sight types</a></p>

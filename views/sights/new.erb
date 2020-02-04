@@ -1,4 +1,4 @@
-<h2>Add a sight to the wishlist</h2>
+<h1>Add a sight to the wishlist</h1>
 
 <% if (defined? @error_message != nil) %>
 <p class="error"><%=@error_message %></p>
@@ -27,7 +27,7 @@
       <option value="<%=type.id %>"><%=type.name %></option>
       <% end %>
     </select>
-    <p><a href="/types/new">Add type</a></p>
+    <p><a href="/sight-types/new">Add type</a></p>
   </fieldset>
   <fieldset>
     <label for="image_url">image_url</label>

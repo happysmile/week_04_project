@@ -9,16 +9,23 @@ end
 get '/search' do
   @locations = Location.list_all()
   @sight_types = SightType.list_all()
+  @countries = Country.list_all()
   erb(:"sights/search" )
 end
 
 post '/search-results' do
-  if (params[:visited] == 'visited')
-    params[:visited] = true
-  else
-    params[:visited] = false
-  end
+  # if (params[:visited] == 'visited')
+  #   params[:visited] = true
+  # else
+  #   params[:visited] = false
+  # end
   @sights = Sight.search(params)
+  erb(:"sights/index")
+end
+
+post '/search-by-country' do
+  country = Country.find_by_id(params[:country_id].to_i)
+  @sights = country.sights()
   erb(:"sights/index")
 end
 
@@ -68,12 +75,19 @@ get '/sights/:id/edit' do
 end
 
 post '/sights/:id' do
-  if (params[:visited] == 'visited')
-    params[:visited] = true
+  if ( (params[:name] == '') || (params[:location_id] == '') || (params[:type_id] == '') )
+    @types = SightType.list_all()
+    @locations = Location.list_all()
+    @error_message = "Name, location and type are required"
+    erb(:"sights/edit")
   else
-    params[:visited] = false
+    if (params[:visited] == 'visited')
+      params[:visited] = true
+    else
+      params[:visited] = false
+    end
+    @sight = Sight.new(params)
+    @sight.update()
+    erb(:"sights/updated")
   end
-  @sight = Sight.new(params)
-  @sight.update()
-  erb(:"sights/updated")
 end

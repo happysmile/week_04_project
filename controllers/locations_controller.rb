@@ -11,9 +11,19 @@ get '/locations/new' do
 end
 
 post '/locations' do
-  @location = Location.new(params)
-  @location.save()
-  erb(:"locations/created")
+  if (params[:name] == '')
+    @error_message = "Please give it a name!"
+    @countries = Country.list_all()
+    erb(:"locations/new")
+  elsif ( Location.find_by_name(params[:name]) != nil )
+    @error_message = "Location already exists!"
+    @countries = Country.list_all()
+    erb(:"locations/new")
+  else
+    @location = Location.new(params)
+    @location.save()
+    erb(:"locations/created")
+  end
 end
 
 get '/locations/:id' do
@@ -37,7 +47,21 @@ get '/locations/:id/edit' do
 end
 
 post '/locations/:id' do
-  @location = Location.new(params)
-  @location.update()
-  erb(:"locations/updated")
+  if (params[:name] == '')
+    @error_message = "Please give it a name!"
+    location_id = params[:id]
+    @location = Location.find_by_id(location_id)
+    @countries = Country.list_all()
+    erb(:"locations/edit")
+  elsif ( Location.find_by_name(params[:name]) != nil )
+    @error_message = "Location already exists!"
+    location_id = params[:id]
+    @location = Location.find_by_id(location_id)
+    @countries = Country.list_all()
+    erb(:"locations/edit")
+  else
+    @location = Location.new(params)
+    @location.update()
+    erb(:"locations/updated")
+  end
 end

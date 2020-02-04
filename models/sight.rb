@@ -32,6 +32,17 @@ class Sight
     return Sight.new(sight)
   end
 
+  def self.find_by_name(name)
+    sql = "SELECT * FROM sights WHERE name = $1"
+    values = [name]
+    if (SqlRunner.run(sql, values).count() > 0)
+      sight = SqlRunner.run(sql, values)[0]
+      return Sight.new(sight)
+    else
+      return nil
+    end
+  end
+
   def self.search(params)
     sql = "SELECT * FROM sights"
     if (params.values.any? { |value| value != '' } )
@@ -49,19 +60,19 @@ class Sight
             sql += " AND "
           end
           sql += "location_id = #{params[:location_id]}"
-        elsif (params[:priority] != '')
-          if (params[:priority] != first_not_empty)
-            sql += " AND "
-          end
-          sql += "priority = #{params[:priority]}"
-        elsif (params[:visited] != '')
-          if (params[:visited] != first_not_empty)
-            sql += " AND "
-          end
-          sql += "visited = #{params[:visited]}"
+        # elsif (params[:priority] != '')
+        #   if (params[:priority] != first_not_empty)
+        #     sql += " AND "
+        #   end
+        # #   sql += "priority = #{params[:priority]}"
+        # elsif (params[:visited] != '')
+        #   if (params[:visited] != first_not_empty)
+        #     sql += " AND "
+        #   end
+        #   sql += "visited = #{params[:visited]}"
         end
     end
-    sql += " ORDER BY name"
+    sql += " ORDER BY name;"
     results = SqlRunner.run(sql)
     return results.map { |result| Sight.new(result) }
   end

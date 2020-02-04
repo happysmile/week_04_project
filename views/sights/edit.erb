@@ -1,4 +1,8 @@
-<h2>Edit sight</h2>
+<h1>Edit sight</h1>
+
+<% if (defined? @error_message != nil) %>
+<p class="error"><%=@error_message %></p>
+<% end %>
 
 <form action="/sights/<%=@sight.id %>" method="POST">
   <fieldset>

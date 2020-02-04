@@ -1,5 +1,9 @@
 <h1>Add a sight type</h1>
 
+<% if (defined? @error_message != nil) %>
+<p class="error"><%=@error_message %></p>
+<% end %>
+
 <form action="/sight-types" method="POST">
   <fieldset>
     <label for="name">Name</label>

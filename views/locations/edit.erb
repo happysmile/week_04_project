@@ -1,4 +1,8 @@
-<h2>Edit location</h2>
+<h1>Edit location</h1>
+
+<% if (defined? @error_message != nil) %>
+<p class="error"><%=@error_message %></p>
+<% end %>
 
 <form action="/locations/<%=@location.id %>" method="POST">
   <fieldset>
