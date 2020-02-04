@@ -24,22 +24,15 @@
       <% end %>
     </select>
   </fieldset>
-  <!-- <fieldset>
+  <fieldset>
     <label for="priority">priority</label>
     <select name="priority">
       <option value="">Any</option>
-      <option value="0">0</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
+      <% for n in 0..5 %>
+      <option value="<%=n %>"><%=n %></option>
+      <% end %>
     </select>
-  </fieldset>
-  <fieldset>
-    <label for="visited">Visited</label>
-    <input type="checkbox" name="visited" value="visited">
-  </fieldset> -->
+  </fieldset> 
   <fieldset>
     <input type="submit" value="Search">
   </fieldset>

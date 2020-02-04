@@ -53,33 +53,56 @@ class Sight
   def self.search(params)
     sql = "SELECT * FROM sights"
     if (params.values.any? { |value| value != '' } )
-      first_not_empty = params.values.find{ |value| value != '' }
+      # first_not_empty = params.values.find{ |value| value != '' }
       sql += " WHERE "
-        if (params[:name] != '')
-          sql += "name LIKE '%#{params[:name]}%'"
-        elsif (params[:type_id] != '')
-          if (params[:type_id] != first_not_empty)
-            sql += " AND "
-          end
-          sql += "type_id = #{params[:type_id]}"
-        elsif (params[:location_id] != '')
-          if (params[:location_id] != first_not_empty)
-            sql += " AND "
-          end
-          sql += "location_id = #{params[:location_id]}"
+      queries = []
+      if (params[:name] != '')
+        queries.push("name LIKE '%#{params[:name]}%'")
+      end
+      if (params[:type_id] != '')
+        queries.push("type_id = #{params[:type_id]}")
+      end
+      if (params[:location_id] != '')
+        queries.push("location_id = #{params[:location_id]}")
+      end
+      if (params[:priority] != '')
+        queries.push("priority = #{params[:priority]}")
+      end
+      # if (params[:visited] != '')
+      #   queries.push("visited = #{params[:visited]}")
+      # end
+
+      sql += queries.join(" AND ")
+
+        # if (params[:name] != '')
+        #   sql += "name LIKE '%#{params[:name]}%'"
+        # end
+        # if (params[:type_id] != '')
+        #   if (params[:type_id] != first_not_empty)
+        #     sql += " AND "
+        #   end
+        #   sql += "type_id = #{params[:type_id]}"
+        # end
+        # if (params[:location_id] != '')
+        #   if (params[:location_id] != first_not_empty)
+        #     sql += " AND "
+        #   end
+        #   sql += "location_id = #{params[:location_id]}"
+        # end
         # elsif (params[:priority] != '')
         #   if (params[:priority] != first_not_empty)
         #     sql += " AND "
         #   end
-        # #   sql += "priority = #{params[:priority]}"
+        #    sql += "priority = #{params[:priority]}"
         # elsif (params[:visited] != '')
         #   if (params[:visited] != first_not_empty)
         #     sql += " AND "
         #   end
         #   sql += "visited = #{params[:visited]}"
-        end
+        #end
     end
     sql += " ORDER BY name;"
+    p sql
     results = SqlRunner.run(sql)
     return results.map { |result| Sight.new(result) }
   end
