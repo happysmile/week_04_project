@@ -5,7 +5,6 @@
     <th>Location</th>
     <th>Country</th>
     <th>Type</th>
-    <th>Visited</th>
   </tr>
   <tr>
     <td>
@@ -13,24 +12,23 @@
     </td>
     <td>
       <a href="#"><%= @location.country().name %></a>
-    </td>    
-    <td>
-      <%= @location.location_type %>
     </td>
     <td>
-      <% if @location.visited %>&#x2713;
-      <% else %>&#x2717;
-      <%end %>
+      <%= @location.location_type %>
     </td>
   </tr>
 </table>
 
-<form action="/locations/<%= @location.id %>/delete" method="post">
-  <input type="submit" name="delete" value="Delete">
+<form class="button_only" action="/locations/<%= @location.id %>/delete" method="post">
+  <fieldset>
+    <input type="submit" name="delete" value="Delete">
+  </fieldset>
 </form>
 
 <form action="/locations/<%= @location.id %>/edit" method="get">
-  <input type="submit" name="update" value="Update">
+  <fieldset>
+    <input type="submit" name="update" value="Update">
+  </fieldset>
 </form>
 
 <% if (@location.sights().count > 0)

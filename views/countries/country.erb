@@ -1,14 +1,14 @@
-<h1><%= @country.name %></h1>
+<h1>Country: <%= @country.name %></h1>
 
 <ul>
     <li>
       <ul>
         <% for location in @country.locations() %>
           <li>
-            <h2><%= location.name %></h2>
+            <h2>Location: <%= location.name %></h2>
             <ul>
               <% for sight in location.sights() %>
-                <li><a href="/sights/<%= sight.id %>"><%= sight.name %></a></li>
+                <li>Sight: <a href="/sights/<%= sight.id %>"><%= sight.name %></a></li>
               <% end %>
             </ul>
           </li>
@@ -16,3 +16,5 @@
       </ul>
     </li>
 </ul>
+
+<p><a href="/countries">View all countries</a></p>

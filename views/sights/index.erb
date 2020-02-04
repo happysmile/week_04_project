@@ -31,7 +31,13 @@
         <%= sight.country().name %>
       </a>
     </td>
-    <td><%= sight.priority.to_i %></td>
+    <td>
+      <% if (sight.priority.to_i>0)
+              for star in 1..sight.priority.to_i do %>
+                &#9733;
+              <%end%>
+      <%end%>
+    </td>
     <td>
       <% if sight.visited %>&#x2713;
       <% else %>&#x2717;

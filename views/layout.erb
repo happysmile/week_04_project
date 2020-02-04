@@ -5,7 +5,7 @@
     <title>Travel Bucket List</title>
     <link rel="stylesheet" href="/style/global.css">
   </head>
-  <body>
+  <body <% if defined?(@idname) %>id="<%=@idname%>"<%end%>>
 
       <nav>
         <ul>

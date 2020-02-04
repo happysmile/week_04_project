@@ -5,7 +5,6 @@
     <th>Country</th>
     <th>Location</th>
     <th>Type</th>
-    <th>Visited</th>
   </tr>
   <tr>
     <td>
@@ -16,11 +15,6 @@
     </td>
     <td>
       <%= @location.location_type %>
-    </td>
-    <td>
-      <% if @location.visited %>&#x2713;
-      <% else %>&#x2717;
-      <%end %>
     </td>
   </tr>
 </table>

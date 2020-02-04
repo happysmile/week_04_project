@@ -1,14 +1,18 @@
 <h1>Sight types</h1>
 
-<ul>
+<ul class="results">
   <% for sight_type in @sight_types %>
     <li>
-      <%= sight_type.name %>
-      <form action="/sight-types/<%= sight_type.id %>/delete" method="post">
-        <input type="submit" name="delete" value="Delete">
+      <h2><%= sight_type.name %></h2>
+      <form class="button_only" action="/sight-types/<%= sight_type.id %>/delete" method="post">
+        <fieldset>
+          <input type="submit" name="delete" value="Delete">
+        </fieldset>
       </form>
-      <form action="/sight-types/<%= sight_type.id %>/edit" method="get">
-        <input type="submit" name="update" value="Update">
+      <form class="button_only" action="/sight-types/<%= sight_type.id %>/edit" method="get">
+        <fieldset>
+          <input type="submit" name="update" value="Update">
+        </fieldset>
       </form>
     </li>
   <% end %>

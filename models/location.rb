@@ -2,14 +2,13 @@ require_relative( '../db/sql_runner' )
 
 class Location
 
-  attr_reader :id, :name, :location_type, :country_id, :visited
+  attr_reader :id, :name, :location_type, :country_id
 
   def initialize(options)
     @id = options['id']
     @name = options['name']
     @location_type = options['location_type'] if options['location_type']
     @country_id = options['country_id']
-    @visited = options['visited'] if options['visited']
   end
 
   def self.delete_all()
@@ -42,8 +41,8 @@ class Location
   end
 
   def save()
-    sql = "INSERT INTO locations(name, location_type, country_id, visited) VALUES ($1, $2, $3, $4) RETURNING id"
-    values = [@name, @location_type, @country_id, @visited]
+    sql = "INSERT INTO locations(name, location_type, country_id) VALUES ($1, $2, $3) RETURNING id"
+    values = [@name, @location_type, @country_id]
     results = SqlRunner.run(sql, values)
     @id = results[0]['id'].to_i
   end
@@ -55,8 +54,8 @@ class Location
   end
 
   def update()
-    sql = "UPDATE locations SET (name, location_type, country_id, visited) = ($1, $2, $3, $4) WHERE id = $5"
-    values = [@name, @location_type, @country_id, @visited, @id]
+    sql = "UPDATE locations SET (name, location_type, country_id) = ($1, $2, $3) WHERE id = $4"
+    values = [@name, @location_type, @country_id, @id]
     SqlRunner.run( sql, values )
   end
 
@@ -70,12 +69,5 @@ class Location
     results = SqlRunner.run(sql, values)
     return results.map { |result| Sight.new(result) }
   end
-
-  # def tick_off()
-  #   @visited = true
-  #   update()
-  #   country = country()
-  #   country.tick_off()
-  # end
 
 end

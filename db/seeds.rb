@@ -43,71 +43,61 @@ require("pry")
 rome = Location.new({
   'name' => 'Rome',
   'location_type' => 'city',
-  'country_id' => '110',
-  'visited' => false
+  'country_id' => '110'
 })
 rome.save()
 florence = Location.new({
   'name' => 'Florence',
   'location_type' => 'city',
-  'country_id' => '110',
-  'visited' => true
+  'country_id' => '110'
 })
 florence.save()
 trentino = Location.new({
   'name' => 'Trentino',
   'location_type' => 'region',
-  'country_id' => '110',
-  'visited' => false
+  'country_id' => '110'
 })
 trentino.save()
 seoul = Location.new({
   'name' => 'Seoul',
   'location_type' => 'city',
-  'country_id' => '206',
-  'visited' => false
+  'country_id' => '206'
 })
 seoul.save()
 tokyo = Location.new({
   'name' => 'Tokyo',
   'location_type' => 'city',
-  'country_id' => '112',
-  'visited' => false
+  'country_id' => '112'
 })
 tokyo.save()
 paris = Location.new({
   'name' => 'Paris',
   'location_type' => 'city',
-  'country_id' => '77',
-  'visited' => false
+  'country_id' => '77'
 })
 paris.save()
 busan = Location.new({
   'name' => 'Busan',
   'location_type' => 'city',
-  'country_id' => '206',
-  'visited' => false
+  'country_id' => '206'
 })
 busan.save()
 edinburgh = Location.new({
   'name' => 'Edinburgh',
   'location_type' => 'city',
-  'country_id' => '235',
-  'visited' => false
+  'country_id' => '235'
 })
 edinburgh.save()
 glasgow = Location.new({
   'name' => 'Glasgow',
   'location_type' => 'city',
-  'country_id' => '235',
-  'visited' => false
+  'country_id' => '235'
 })
 glasgow.save()
 agra = Location.new({
   'name' => 'Agra',
   'location_type' => 'city',
-  'country_id' => '103',
-  'visited' => false
+  'country_id' => '103'
 })
 agra.save()
 
@@ -147,6 +137,7 @@ tour_eiffel = Sight.new({
   'name' => 'Tour Eiffel',
   'location_id' => '6',
   'type_id' => '1',
+  'image_url' => '/images/tour_eiffel.jpeg',
   'priority' => '3',
   'visited' => true
 })

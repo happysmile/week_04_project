@@ -12,5 +12,6 @@ require_relative('./controllers/countries_controller.rb')
 also_reload('./models/*')
 
 get '/' do
+  @idname = "home"
   erb( :index )
 end

@@ -2,13 +2,12 @@ require_relative( '../db/sql_runner' )
 
 class Country
 
-  attr_reader :id, :name, :continent_id, :visited
+  attr_reader :id, :name, :continent_id
 
   def initialize(options)
     @id = options['id']
     @continent_id = options['continent_id']
     @name = options['name']
-    @visited = options['visited'] if options['visited']
   end
 
   def self.delete_all()
@@ -53,8 +52,8 @@ class Country
   end
 
   def save()
-    sql = "INSERT INTO countries(continent_id, name, visited) VALUES ($1, $2, $3) RETURNING id"
-    values = [@continent_id, @name, @visited]
+    sql = "INSERT INTO countries(continent_id, name) VALUES ($1, $2) RETURNING id"
+    values = [@continent_id, @name]
     results = SqlRunner.run(sql, values)
     @id = results[0]['id'].to_i
   end
@@ -66,8 +65,8 @@ class Country
   end
 
   def update()
-    sql = "UPDATE countries SET (continent_id, name, visited) = ($1, $2, $3) WHERE id = $4"
-    values = [@continent_id, @name, @visited, @id]
+    sql = "UPDATE countries SET (continent_id, name) = ($1, $2) WHERE id = $3"
+    values = [@continent_id, @name, @id]
     SqlRunner.run( sql, values )
   end
 
@@ -88,10 +87,5 @@ class Country
     results = SqlRunner.run( sql, values )
     return results.map { |result| Sight.new(result) }
   end
-
-  # def tick_off()
-  #   @visited = true
-  #   update()
-  # end
 
 end
