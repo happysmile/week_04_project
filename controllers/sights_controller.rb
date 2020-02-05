@@ -46,11 +46,7 @@ post '/sights' do
     @error_message = "Name, location and type are required"
     erb(:"sights/new")
   else
-    # if (params[:visited] == 'visited')
-    #   params[:visited] = true
-    # elsif( (params[:visited] != 'visited') && (params[:visited] != '') )
-    #   params[:visited] = false
-    # end
+    params[:visited] = false
     @sight = Sight.new(params)
     @sight.save()
     erb(:"sights/created")

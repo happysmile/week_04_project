@@ -8,10 +8,10 @@ class Sight
     @id = options['id']
     @name = options['name']
     @location_id = options['location_id']
-    @type_id = options['type_id'] 
+    @type_id = options['type_id']
     @image_url = options['image_url'] if options['image_url']
     @priority = options['priority'] if options['priority']
-    @visited = options['visited'] if options['visited']
+    @visited = options['visited']
   end
 
   def self.delete_all()

@@ -11,7 +11,7 @@
       <%= @location.name %>
     </td>
     <td>
-      <a href="#"><%= @location.country().name %></a>
+      <a href="/countries/<%= @location.country().id %>"><%= @location.country().name %></a>
     </td>
     <td>
       <%= @location.location_type %>
@@ -42,4 +42,4 @@ sights = @location.sights()%>
 </ul>
 <%end %>
 
-<p><a href="/locations">View all locations</a></p>
+<p class="more"><a href="/locations">View all locations</a></p>

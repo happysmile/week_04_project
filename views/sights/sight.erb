@@ -28,7 +28,7 @@
               <%end%>
           <%end%>
       </td>
-      <td><% if @sight.visited %>&#x2713;<% else %>&#x2717;<%end %></td>
+      <td><% if @sight.visited == 't' %>&#x2713;<% else %>&#x2717;<%end %></td>
     </tr>
   </tbody>
 </table>
@@ -46,4 +46,4 @@
   </form>
 </div>
 
-<p><a href="/sights">View all sights</a></p>
+<p class="more"><a href="/sights">View all sights</a></p>

@@ -1,3 +1,5 @@
+/* General style */
+
 body {
 	background-color: white;
   margin: 0;
@@ -5,14 +7,6 @@ body {
 	font: 67.5% Verdana, Arial, serif;
 	color: indigo;
   text-align: center;
-}
-
-#home {
-	background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
-}
-
-#home h1{
-	color: white;
 }
 
 h1 {
@@ -50,7 +44,7 @@ img {
 }
 
 hr {
- border-color: thistle;
+ border: 1px lavender solid;
 }
 
 ul {
@@ -153,6 +147,22 @@ dl {
 dt {
 	text-align: left;
 	font-weight: bold;
+}
+
+/* Specific styles */
+
+#home {
+	background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+}
+
+#home h1{
+	color: white;
+}
+
+.more {
+	border-top: 1px lavender solid;
+	margin-top: 1rem;
+	padding-top: 1rem;
 }
 
 .error {

@@ -7,7 +7,7 @@
       <ul>
         <% for location in country.locations() %>
           <dl>
-            <dt>Location: <%= location.name %></dt>
+            <dt>Location: <a href="/locations/<%= location.id %>"><%= location.name %></a></dt>
             <dd>
               <ul>
                 <% for sight in location.sights() %>
