@@ -20,24 +20,34 @@ Any other ideas you might come up with.
 
 ---------------------------------------------------------------------------------------
 
-Notes
+Francesca's notes
 
 * Features that I was hoping to look at
 
-Continent views and searches (I have the model, I didn't have time for the views)
-Long text box for notes about the trip
-Making a model also for location type like sight type
-Date visited (to - from?) and search by date
-Maybe separate pages for visited and not visited (currently possible as a search result so it's just a matter of creating some views)
+1. Continent views and searches (I have the model, I didn't have time for the views)
+
+2. Long text box for notes about the trip
+
+3. Making a model also for location type like sight type
+
+4. Date visited (to - from?) and search by date
+
+5. Maybe separate pages for visited and not visited (currently possible as a search result so it's just a matter of creating some views)
 
 * Things to fix or improve
 
-Make query strings safe for sql
-More validation (but could be done with JS)
-Trying to avoid duplicate entries
-Different ways of sorting values in table by clicking on the th (JS)
+1. Make query strings safe for sql
+
+2. More validation (but could be done with JS)
+
+3. Trying to avoid duplicate entries
+
+4. Different ways of sorting values in table by clicking on the th (JS)
 
 * In my next life
-Image upload (JS?)
-Map (JS)
-Accounts for users and ability to follow friends, exchange messages, meet people in location we plan to visit
+
+1. Image upload (JS?)
+
+2. Integrating with a map (JS)
+
+3. Accounts for users and ability to follow friends, exchange messages, meet people in location we plan to visit
