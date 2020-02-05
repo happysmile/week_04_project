@@ -19,7 +19,13 @@
       <td><%= @sight.type().name %></td>
       <td><%= @sight.country().name %></td>
       <td><%= @sight.location().name %></td>
-      <td><%= @sight.priority %></td>
+      <td>
+        <% if (@sight.priority.to_i>0)
+          for star in 1..@sight.priority.to_i do %>
+            &#9733;
+          <%end%>
+        <%end%>
+      </td>
       <td><% if @sight.visited %>&#x2713;<% else %>&#x2717;<%end %></td>
     </tr>
   </tbody>

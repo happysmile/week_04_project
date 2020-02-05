@@ -1,3 +1,5 @@
+require('pry')
+
 get '/sights' do
   @continents = Continent.list_all()
   @countries = Country.list_all()

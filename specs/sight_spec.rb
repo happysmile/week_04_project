@@ -47,7 +47,7 @@ class TestSight < MiniTest::Test
 
   # TO DO! FIND OUT WHY NIL AND NOT FALSE
   def test_sight_visited_false()
-    assert_nil(@sight1.visited)
+    assert_equal(false, @sight1.visited)
   end
 
   def test_sight_visited_true()
