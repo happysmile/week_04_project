@@ -51,3 +51,6 @@ Francesca's notes
 2. Integrating with a map (JS)
 
 3. Accounts for users and ability to follow friends, exchange messages, meet people in location we plan to visit
+
+---------------------------------------------------------------------------------------
+To run the app: ruby app.rb
